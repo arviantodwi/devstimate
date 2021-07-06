@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
+import wizardReducer from "../features/wizard/wizardSlice";
 import counterReducer from "../features/counter/counterSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    wizard: wizardReducer,
   },
 });
 

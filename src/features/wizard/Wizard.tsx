@@ -1,8 +1,18 @@
 import { useTranslation } from "react-i18next";
+import { useHistory, useLocation } from "react-router-dom";
 
 import Button from "../../components/button";
 import { Select } from "../../components/form";
 import { ChangeEvent, FormEvent } from "@devstimate";
+import { useAppDispatch } from "../../app/store";
+import {
+  Size,
+  Stage,
+  Platform,
+  setSizeOption,
+  setStageOption,
+  setPlatformOption,
+} from "./wizardSlice";
 import {
   WizardContainer,
   Form,
@@ -12,7 +22,10 @@ import {
 } from "./style";
 
 const Wizard: React.FC = () => {
+  const history = useHistory();
+  const location = useLocation();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const sizeTranslations = t("landing.wizard.size_options", {
     returnObjects: true,
@@ -40,17 +53,17 @@ const Wizard: React.FC = () => {
     { value: "android", label: platformTranslations[2] },
   ];
 
-  const handleChange = (e: ChangeEvent) => {
-    console.log(e.target.value);
-  };
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    // TODO Set cookies of selected wizard options
+
+    history.push("/planner");
   };
 
   return (
     <WizardContainer data-feature="wizard">
-      <Form method="GET" action="/" onSubmit={handleSubmit}>
+      <Form method="GET" action={location.pathname} onSubmit={handleSubmit}>
         <IntroText>{t("landing.wizard.intro")}</IntroText>
 
         <SelectWrapper>
