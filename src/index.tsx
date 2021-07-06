@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import "./i18n";
 import { store } from "./app/store";
 import GlobalStyle from "./app/globalStyle";
 import * as serviceWorker from "./serviceWorker";
