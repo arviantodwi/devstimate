@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { COLOR_CHAMBRAY } from "../../app/constants";
+
 import { pxToRem } from "../../app/helpers";
+import { COLOR_CHAMBRAY } from "../../app/constants";
+
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {};
 
 const StyledButton = styled.button`
   white-space: nowrap;
@@ -27,8 +30,12 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button: React.FC = ({ children, ...rest }) => {
-  return <StyledButton {...rest}>{children}</StyledButton>;
+const Button: React.FC<Props> = ({ type, children, ...rest }) => {
+  return (
+    <StyledButton type={type ?? "button"} {...rest}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default Button;

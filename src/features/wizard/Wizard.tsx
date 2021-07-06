@@ -59,7 +59,9 @@ const Wizard: React.FC = () => {
             name="app_size"
             options={sizeOptions}
             groupLabel="App size"
-            onOptionChange={(e: ChangeEvent) => handleChange(e)}
+            onSelectChange={(e: ChangeEvent) =>
+              dispatch(setSizeOption(e.target.value as Size))
+            }
           />
 
           <Select
@@ -67,7 +69,9 @@ const Wizard: React.FC = () => {
             name="app_stage"
             options={stageOptions}
             groupLabel="App stage"
-            onOptionChange={(e: ChangeEvent) => handleChange(e)}
+            onSelectChange={(e: ChangeEvent) =>
+              dispatch(setStageOption(e.target.value as Stage))
+            }
           />
 
           <Select
@@ -75,11 +79,13 @@ const Wizard: React.FC = () => {
             name="app_platform"
             options={platformOptions}
             groupLabel="App platform"
-            onOptionChange={(e: ChangeEvent) => handleChange(e)}
+            onSelectChange={(e: ChangeEvent) =>
+              dispatch(setPlatformOption(e.target.value as Platform))
+            }
           />
         </SelectWrapper>
 
-        <Button>{t("landing.wizard.button_label")}</Button>
+        <Button type="submit">{t("landing.wizard.button_label")}</Button>
       </Form>
 
       <FootNote>{t("landing.wizard.footnote")}</FootNote>
