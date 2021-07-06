@@ -10,6 +10,10 @@ const Router = () => (
         <Landing />
       </Route>
 
+      <Route path="/planner">
+        <h1>Planner</h1>
+      </Route>
+
       <Route path="/default-react-app">
         <DefaultReactApp />
       </Route>

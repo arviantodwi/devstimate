@@ -14,12 +14,11 @@ type SelectOptions = {
   label: string;
 };
 
-type Props = React.HTMLAttributes<HTMLElement> & {
-  name: string;
+type Props = React.SelectHTMLAttributes<HTMLSelectElement> & {
   options: SelectOptions[];
   groupLabel?: string;
   selectedValue?: string;
-  onOptionChange?: (e: ChangeEvent) => void;
+  onSelectChange?: (e: ChangeEvent) => unknown;
 };
 
 const Label = styled.label`
@@ -60,7 +59,7 @@ const Select: React.FC<Props> = ({
   options,
   groupLabel,
   selectedValue,
-  onOptionChange,
+  onSelectChange,
   ...rest
 }) => {
   const [value, setValue] = useState(selectedValue);
@@ -74,8 +73,8 @@ const Select: React.FC<Props> = ({
   const handleChange = (e: ChangeEvent) => {
     setValue(e.target.value);
 
-    if (onOptionChange) {
-      return onOptionChange(e);
+    if (onSelectChange) {
+      return onSelectChange(e);
     }
   };
 
